@@ -24,16 +24,21 @@
 #include <memory.h>
 #include <math.h>
 
+/*
+** Include ISOC Headers.
+*/
+#include <stdint.h>
+
 #undef min
 #undef max
 /*
 ** Simple Datatypes
 */
 typedef void VOID;
-typedef long LONG;
-typedef unsigned char BYTE;
-typedef unsigned short WORD;
-typedef unsigned long DWORD;
+typedef int32_t LONG;
+typedef uint8_t BYTE;
+typedef uint16_t WORD;
+typedef uint32_t DWORD;
 
 typedef char STRING[256];
 typedef char PATH[1024];
