@@ -14,10 +14,17 @@
 #define __MATH_H__
 
 #include <math.h>
+#include <stdint.h>
 
 int isqrt(int value);
+int imin(int a, int b);
+int imax(int a, int b);
+int isqr(int value);
+int imuldiv(int a, int b, int c);
+void memcpy32(uint32_t *src, uint32_t *dst, int num);
 
-int imin(int, int);
+#ifdef __WATCOMC__
+
 #pragma aux imin =\
   "cmp eax, ebx",\
   "jl skipit",\
@@ -26,7 +33,6 @@ int imin(int, int);
   parm nomemory [eax][ebx]\
   modify exact [eax];
 
-int imax(int, int);
 #pragma aux imax =\
   "cmp eax, ebx",\
   "jg skipit",\
@@ -35,23 +41,21 @@ int imax(int, int);
   parm nomemory [eax][ebx]\
   modify exact [eax];
 
-int isqr(int);
 #pragma aux isqr =\
   "imul eax, eax",\
   parm nomemory [eax]\
   modify exact [eax]\
   value [eax];
   
-int imuldiv(int, int, int);
 #pragma aux imuldiv parm [eax] [edx] [ebx] modify exact [eax edx] = \
   "imul edx"  \
   "idiv ebx";
 
-void memcpy32(long *Source, long *Destination, int Length);
 #pragma aux memcpy32 = " rep movsd " parm [EDI] [ESI] [ECX] modify [EDI ESI ECX];
 
-      
 #endif
+
+#endif /* __MATH_H__ */
 
 
 

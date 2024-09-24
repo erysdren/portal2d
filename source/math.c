@@ -43,3 +43,32 @@ int isqrt(int value)
   return root;
 }
 
+#ifndef __WATCOMC__
+
+int imin(int a, int b)
+{
+	return a < b ? a : b;
+}
+
+int imax(int a, int b)
+{
+	return a > b ? a : b;
+}
+
+int isqr(int value)
+{
+	return value * value;
+}
+
+int imuldiv(int a, int b, int c)
+{
+	return (a * b) / c;
+}
+
+void memcpy32(uint32_t *src, uint32_t *dst, int num)
+{
+	while (num--)
+		*dst++ = *src++;
+}
+
+#endif
